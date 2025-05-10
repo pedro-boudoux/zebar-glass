@@ -6,7 +6,8 @@
 
 i {
   /* color: rgb(115 130 175 / 95%); */
-  margin-right: 8px;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
 body {
@@ -19,6 +20,8 @@ html,
 body,
 #root {
   height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 @keyframes flash {
@@ -31,45 +34,68 @@ body,
   border-bottom: 1px solid rgb(255 255 255 / 5%);
   user-select: none;  
   background: rgba(0, 0, 0, 0.347); /* semi-transparent for glass effect */
-    backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(120px) saturate(160%);
   font-size: 12pt;
-    font-family:  "Bahnschrift", monospace;
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  font-family:  "Bahnschrift", monospace;
+  -webkit-backdrop-filter: blur(120px) saturate(160%);
   box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
   border-radius: 8px;
+  position: relative;
+}
+
+#root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.18;
+  background: url('https://www.transparenttextures.com/patterns/noise.png');
 }
 
 .app {
-  display: grid;
-  grid-template-columns: 1fr 0.5fr 1fr;
-  align-items: center;
+  position: fixed;
+
+  left: 6px;
+  right: 6px;
+  width: auto;
+  margin:0 6px 0 6px;
   height: 100%;
+  display: flex;
+  justify-content: space-between;
   padding: 5px 8px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 13px;
-
-
+  z-index: 10;
 }
 
-.left,
-.center,
-.right {
+.left, .right {
   display: flex;
   align-items: center;
 }
 
+.left {
+  justify-content: flex-start;
+}
+
+
 .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin-right: 0;
   width: 100%;
 }
 
 .right {
-  justify-content: end;
-}
+  justify-content: flex-end;
+} 
 
-.right > * {
-  margin-left: 12px;
-}
+
 
 .logo,
 .binding-mode,
@@ -91,18 +117,13 @@ body,
 .battery,
 .weather {
   background: rgb(255 255 255 / 7%);
-  padding: 2px 6px;
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 30px;
 }
 
-.memory,
-.cpu {
-  background: none !important;
-  padding: 0;
-}
 
 .btn{
   border: none;
@@ -116,138 +137,6 @@ body,
   background: transparent;
   color: violet;
   cursor: pointer;
-}
-
-.workspaces {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.workspace {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 15px;
-  font-family: inherit;
-  font-weight: normal;
-  outline: none;
-  box-shadow: none;
-  cursor: pointer;
-  padding: 0 4px;
-  border-radius: 4px;
-  transition: color 0.15s, font-weight 0.15s;
-}
-
-.workspace-current {
-  font-weight: bold;
-  color: #fff;
-}
-
-.workspace-faded {
-  color: #888;
-  opacity: 0.5;
-  cursor: default;
-}
-
-.workspace:focus,
-.workspace:hover {
-  text-decoration: underline;
-}
-
-.binding-mode,
-.tiling-direction {
-  background: rgb(255 255 255 / 15%);
-  color: rgb(255 255 255 / 90%);
-  border-radius: 10px;
-  line-height: 1;
-  padding: 4px 5px;
-  border: 0;
-  cursor: pointer;
-}
-
-.binding-mode {
-  margin-right: 4px;
-}
-
-.orange {
-  color: #ffa500;
-}
-
-.red {
-  color: #ff4500;
-}
-
-.green {
-  color: #33ff57;
-}
-
-
-.stack {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: rgb(255 255 255 / 7%);
-  border-radius: 10px;
-  padding: 0px 8px;
-  font-size:12px;
-  margin-right:5px;
-}
-
-
-.stack-nw-speed {
-  display: flex;
-  width: 100px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: rgb(255 255 255 / 7%);
-  border-radius: 10px;
-  padding: 0px 8px;
-  font-size:12px;
-  margin-right:5px;
-}
-
-.cpu1 {
-  color: #1e90ff;
-}
-
-.cpu .high-usage {
-  color: #900029;
-  animation: flash 0.5s infinite;
-}
-
-
-
-.memory .high-usage {
-  color: #900029;
-  animation: flash 0.5s infinite;
-}
-
-.battery {
-  position: relative;
-  /* color: #ffa500; */
-}
-
-.battery .charging-icon {
-  position: absolute;
-  font-size: 8px;
-  left: 1px;
-  top: 3px;
-  color: rgb(255, 60, 0);
-}
-
-.cycle_count1 {
-  color: yellowgreen;
-}
-
-.uptime1 {
-  color: yellow;
-}
-
-.weather {
-  color: yellow;
 }
 
 .media-title-scroll-container {
@@ -281,7 +170,6 @@ body,
   }
 }
 
-/* Only animate if text is too long */
 .media-title-scroll:not(:hover) {
   animation-play-state: running;
 }
