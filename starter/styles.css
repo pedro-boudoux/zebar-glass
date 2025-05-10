@@ -1,0 +1,290 @@
+/**
+ * Import the Nerdfonts icon font.
+ * Ref https://www.nerdfonts.com/cheat-sheet for a cheatsheet of available Nerdfonts icons.
+ */
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
+
+i {
+  /* color: rgb(115 130 175 / 95%); */
+  margin-right: 8px;
+}
+
+body {
+  color: rgb(255 255 255 / 90%);
+  overflow: hidden;
+  font-size: 13px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+@keyframes flash {
+  from { opacity: 1.0; }
+  50% { opacity: 0.5; }
+  to { opacity: 1.0; }
+}
+
+#root {
+  border-bottom: 1px solid rgb(255 255 255 / 5%);
+  user-select: none;  
+  background: rgba(0, 0, 0, 0.347); /* semi-transparent for glass effect */
+    backdrop-filter: blur(12px) saturate(160%);
+  font-size: 12pt;
+    font-family:  "Bahnschrift", monospace;
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
+  border-radius: 8px;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 1fr;
+  align-items: center;
+  height: 100%;
+  padding: 5px 8px;
+  border-radius: 13px;
+
+
+}
+
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  justify-content: center;
+  margin-right: 0;
+  width: 100%;
+}
+
+.right {
+  justify-content: end;
+}
+
+.right > * {
+  margin-left: 12px;
+}
+
+.logo,
+.binding-mode,
+.tiling-direction,
+.network,
+.memory,
+.volume,
+.cpu,
+.cycle_count,
+.battery {
+  margin-right: 5px;
+}
+
+.network,
+.cycle_count,
+.uptime,
+.memory,
+.cpu,
+.battery,
+.weather {
+  background: rgb(255 255 255 / 7%);
+  padding: 2px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 30px;
+}
+
+.memory,
+.cpu {
+  background: none !important;
+  padding: 0;
+}
+
+.btn{
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.btn1{
+  border: none;
+  background: transparent;
+  color: violet;
+  cursor: pointer;
+}
+
+.workspaces {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.workspace {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: normal;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 0 4px;
+  border-radius: 4px;
+  transition: color 0.15s, font-weight 0.15s;
+}
+
+.workspace-current {
+  font-weight: bold;
+  color: #fff;
+}
+
+.workspace-faded {
+  color: #888;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.workspace:focus,
+.workspace:hover {
+  text-decoration: underline;
+}
+
+.binding-mode,
+.tiling-direction {
+  background: rgb(255 255 255 / 15%);
+  color: rgb(255 255 255 / 90%);
+  border-radius: 10px;
+  line-height: 1;
+  padding: 4px 5px;
+  border: 0;
+  cursor: pointer;
+}
+
+.binding-mode {
+  margin-right: 4px;
+}
+
+.orange {
+  color: #ffa500;
+}
+
+.red {
+  color: #ff4500;
+}
+
+.green {
+  color: #33ff57;
+}
+
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255 255 255 / 7%);
+  border-radius: 10px;
+  padding: 0px 8px;
+  font-size:12px;
+  margin-right:5px;
+}
+
+
+.stack-nw-speed {
+  display: flex;
+  width: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255 255 255 / 7%);
+  border-radius: 10px;
+  padding: 0px 8px;
+  font-size:12px;
+  margin-right:5px;
+}
+
+.cpu1 {
+  color: #1e90ff;
+}
+
+.cpu .high-usage {
+  color: #900029;
+  animation: flash 0.5s infinite;
+}
+
+
+
+.memory .high-usage {
+  color: #900029;
+  animation: flash 0.5s infinite;
+}
+
+.battery {
+  position: relative;
+  /* color: #ffa500; */
+}
+
+.battery .charging-icon {
+  position: absolute;
+  font-size: 8px;
+  left: 1px;
+  top: 3px;
+  color: rgb(255, 60, 0);
+}
+
+.cycle_count1 {
+  color: yellowgreen;
+}
+
+.uptime1 {
+  color: yellow;
+}
+
+.weather {
+  color: yellow;
+}
+
+.media-title-scroll-container {
+  width: 180px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.media-title-scroll {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 8s linear infinite;
+  font-size: 1em;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  10% {
+    transform: translateX(0%);
+  }
+  90% {
+    transform: translateX(calc(-100% + 180px));
+  }
+  100% {
+    transform: translateX(calc(-100% + 180px));
+  }
+}
+
+/* Only animate if text is too long */
+.media-title-scroll:not(:hover) {
+  animation-play-state: running;
+}
+.media-title-scroll:hover {
+  animation-play-state: paused;
+}
