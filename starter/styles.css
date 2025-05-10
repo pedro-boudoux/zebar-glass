@@ -47,7 +47,7 @@ body,
   content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
+
   z-index: 1;
   opacity: 0.18;
   background: url('https://www.transparenttextures.com/patterns/noise.png');
@@ -68,6 +68,7 @@ body,
   padding-right: 10px;
   border-radius: 13px;
   z-index: 10;
+  pointer-events: auto !important;
 }
 
 .left, .right {
@@ -88,7 +89,7 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+ 
 }
 
 .right {
@@ -130,6 +131,8 @@ body,
   background: transparent;
   color: white;
   cursor: pointer;
+  pointer-events: auto !important;
+
 }
 
 .btn1{
